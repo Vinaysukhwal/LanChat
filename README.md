@@ -1,70 +1,145 @@
-# LAN WiFi P2P Chat Application
+# LANChat – Peer-to-Peer WiFi Chat Application
 
-A local network peer-to-peer chat app built with C++17 and Qt. Made as an internship project to learn network programming with sockets.
+LANChat is a desktop-based peer-to-peer messaging application built with **C++17** and the **Qt Framework**. It enables users connected to the same local WiFi/LAN network to automatically discover each other and exchange messages in real time without relying on a central server.
+
+Developed as part of a software engineering internship assignment, the project demonstrates practical implementation of **socket programming, peer discovery, TCP/UDP networking, Qt Signals & Slots, and desktop application development**.
+
+---
+
+## Features
+
+- Automatic peer discovery using **UDP Broadcast**
+- Real-time messaging using **TCP sockets**
+- JSON-based message communication
+- Dynamic port allocation for multiple local instances
+- User visibility (Online / Invisible)
+- Persistent local chat history
+- Automatic restoration of previous conversations
+- Responsive desktop interface built with **Qt Widgets**
+- Event-driven architecture using **Qt Signals & Slots**
+
+---
 
 ## Demo
 
-![App Screenshot](demo_screenshot.png)
+![Application Screenshot](demo_screenshot.png)
 
-## Quick Start (No Build Required)
+---
 
-If you just want to try the app, **double-click `LANChat.exe`** — all required DLLs are included. No need to install Qt.
+## Tech Stack
 
-To test peer-to-peer messaging, open two instances of `LANChat.exe` on the same machine. They'll find each other automatically.
+- C++17
+- Qt Framework
+- Qt Network
+- TCP Sockets
+- UDP Broadcast
+- JSON
+- Qt Widgets
+- File Handling
 
-## What it does
-- Automatically finds other users on the same WiFi/LAN using UDP broadcast (like a heartbeat ping every 2 seconds)
-- Sends actual messages over TCP with JSON payloads
-- Uses QDataStream framing to handle TCP packet splitting/merging properly
-- Lets you run multiple instances on one machine since it picks random ports
-- You can toggle yourself as visible/invisible to other users
-- Saves chat history to a text file and loads it back on startup
+---
 
-## Project structure
-```
+## Project Structure
+
+```text
 LANChat/
-├── LANChat.pro         # qmake project file
 ├── include/
-│   ├── peerinfo.h      # peer data struct
-│   ├── chatmanager.h   # networking logic (UDP + TCP)
-│   └── mainwindow.h    # UI controller
+│   ├── peerinfo.h
+│   ├── chatmanager.h
+│   └── mainwindow.h
 ├── src/
 │   ├── main.cpp
 │   ├── chatmanager.cpp
 │   └── mainwindow.cpp
 ├── ui/
-│   └── mainwindow.ui   # Qt Designer layout
-└── chat_history.txt    # auto-created log file
+│   └── mainwindow.ui
+├── resources/
+├── chat_history.txt
+└── LANChat.pro
 ```
 
-## Requirements (for building from source)
+---
+
+## Running the Application
+
+### Pre-built Application
+
+Simply run:
+
+```
+LANChat.exe
+```
+
+All required Qt libraries are included.
+
+To test messaging, launch two instances on the same machine or run the application on multiple devices connected to the same local network.
+
+---
+
+## Building from Source
+
+### Requirements
+
 - Windows
-- C++17 compiler (MSVC 2019+ or MinGW 8.1+)
-- Qt 5.15+ or Qt 6 (needs core, gui, network, widgets modules)
+- C++17
+- Qt 5.15+ or Qt 6
+- Qt Creator (Recommended)
 
-## How to build
+### Build
 
-### Using Qt Creator
-1. Open Qt Creator
-2. File -> Open -> select `LANChat.pro`
-3. Pick a kit (Desktop Qt MinGW or MSVC)
-4. Hit the green Run button (Ctrl+R)
-
-### Command line (MinGW)
-Make sure `qmake` and `mingw32-make` are in your PATH.
-
-```cmd
-cd LANChat
+```bash
 qmake LANChat.pro
 mingw32-make
 ```
 
-Then run `.\debug\LANChat.exe` or `.\release\LANChat.exe`.
+For MSVC:
 
-If you're using MSVC, use `nmake` instead of `mingw32-make`.
+```bash
+nmake
+```
+
+---
 
 ## Testing
 
-The easiest way to test is to open two instances of the app on the same machine. They'll automatically discover each other within a couple seconds because each instance gets its own random TCP port. Select the other instance from the peer list and send a message - it should show up instantly on the other side.
+The application automatically discovers nearby peers every few seconds using UDP broadcast.
 
-You can also toggle the "Visible to Nearby Users" checkbox to test the offline/online broadcast. Check `chat_history.txt` to see the raw message log.
+To test:
+
+1. Launch two instances.
+2. Wait for peer discovery.
+3. Select a user.
+4. Send messages.
+5. Verify chat history persistence after restarting.
+
+---
+
+## Concepts Demonstrated
+
+- Peer-to-Peer Networking
+- TCP/IP Communication
+- UDP Broadcast Discovery
+- Socket Programming
+- Event-Driven Programming
+- Qt Signals & Slots
+- Desktop Application Development
+- File Persistence
+- Object-Oriented Programming
+
+---
+
+## Future Enhancements
+
+- File Sharing
+- Group Chat
+- End-to-End Encryption
+- User Authentication
+- Cross-Platform Support (Windows/Linux/macOS)
+
+---
+
+## Author
+
+**Vinay Sukhwal**
+
+Software Developer | Backend Development | C++ | Qt | Networking
